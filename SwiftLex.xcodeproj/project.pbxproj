@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		0849CADB2A5312B900889957 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CADA2A5312B900889957 /* main.swift */; };
+		0849CAE32A5312C300889957 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAE22A5312C300889957 /* Regex.swift */; };
+		0849CAE62A5312F900889957 /* NFA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAE52A5312F900889957 /* NFA.swift */; };
+		0849CAE82A53140C00889957 /* RegexLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAE72A53140C00889957 /* RegexLiteral.swift */; };
+		0849CAEA2A53181D00889957 /* RegexAlternation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAE92A53181D00889957 /* RegexAlternation.swift */; };
+		0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAEB2A53191C00889957 /* RegexConcatenation.swift */; };
+		0849CAEE2A5319D800889957 /* RegexKleene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAED2A5319D800889957 /* RegexKleene.swift */; };
+		0849CAF02A531AA600889957 /* Thompson's Construction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAEF2A531AA600889957 /* Thompson's Construction.swift */; };
+		0849CAF32A531C0E00889957 /* DFA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAF22A531C0E00889957 /* DFA.swift */; };
+		0849CAF52A531C1C00889957 /* Subset Construction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAF42A531C1C00889957 /* Subset Construction.swift */; };
+		0849CAF72A531CF500889957 /* NFAState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAF62A531CF500889957 /* NFAState.swift */; };
+		0849CAF92A531D3C00889957 /* NFATransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAF82A531D3C00889957 /* NFATransition.swift */; };
+		0849CAFB2A536BBE00889957 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFA2A536BBE00889957 /* Parser.swift */; };
+		0849CAFD2A536D6E00889957 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFC2A536D6E00889957 /* Global.swift */; };
+		0849CAFF2A536F8700889957 /* LexError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFE2A536F8700889957 /* LexError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +39,20 @@
 /* Begin PBXFileReference section */
 		0849CAD72A5312B900889957 /* SwiftLex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftLex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0849CADA2A5312B900889957 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0849CAE22A5312C300889957 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		0849CAE52A5312F900889957 /* NFA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFA.swift; sourceTree = "<group>"; };
+		0849CAE72A53140C00889957 /* RegexLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexLiteral.swift; sourceTree = "<group>"; };
+		0849CAE92A53181D00889957 /* RegexAlternation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexAlternation.swift; sourceTree = "<group>"; };
+		0849CAEB2A53191C00889957 /* RegexConcatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexConcatenation.swift; sourceTree = "<group>"; };
+		0849CAED2A5319D800889957 /* RegexKleene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexKleene.swift; sourceTree = "<group>"; };
+		0849CAEF2A531AA600889957 /* Thompson's Construction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thompson's Construction.swift"; sourceTree = "<group>"; };
+		0849CAF22A531C0E00889957 /* DFA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFA.swift; sourceTree = "<group>"; };
+		0849CAF42A531C1C00889957 /* Subset Construction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subset Construction.swift"; sourceTree = "<group>"; };
+		0849CAF62A531CF500889957 /* NFAState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFAState.swift; sourceTree = "<group>"; };
+		0849CAF82A531D3C00889957 /* NFATransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFATransition.swift; sourceTree = "<group>"; };
+		0849CAFA2A536BBE00889957 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		0849CAFC2A536D6E00889957 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		0849CAFE2A536F8700889957 /* LexError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +86,46 @@
 			isa = PBXGroup;
 			children = (
 				0849CADA2A5312B900889957 /* main.swift */,
+				0849CAFC2A536D6E00889957 /* Global.swift */,
+				0849CAFE2A536F8700889957 /* LexError.swift */,
+				0849CAE12A5312BE00889957 /* Regex */,
+				0849CAE42A5312F000889957 /* NFA */,
+				0849CAF12A531BF700889957 /* DFA */,
 			);
 			path = SwiftLex;
+			sourceTree = "<group>";
+		};
+		0849CAE12A5312BE00889957 /* Regex */ = {
+			isa = PBXGroup;
+			children = (
+				0849CAFA2A536BBE00889957 /* Parser.swift */,
+				0849CAE22A5312C300889957 /* Regex.swift */,
+				0849CAE72A53140C00889957 /* RegexLiteral.swift */,
+				0849CAE92A53181D00889957 /* RegexAlternation.swift */,
+				0849CAEB2A53191C00889957 /* RegexConcatenation.swift */,
+				0849CAED2A5319D800889957 /* RegexKleene.swift */,
+			);
+			path = Regex;
+			sourceTree = "<group>";
+		};
+		0849CAE42A5312F000889957 /* NFA */ = {
+			isa = PBXGroup;
+			children = (
+				0849CAE52A5312F900889957 /* NFA.swift */,
+				0849CAF62A531CF500889957 /* NFAState.swift */,
+				0849CAF82A531D3C00889957 /* NFATransition.swift */,
+				0849CAEF2A531AA600889957 /* Thompson's Construction.swift */,
+			);
+			path = NFA;
+			sourceTree = "<group>";
+		};
+		0849CAF12A531BF700889957 /* DFA */ = {
+			isa = PBXGroup;
+			children = (
+				0849CAF22A531C0E00889957 /* DFA.swift */,
+				0849CAF42A531C1C00889957 /* Subset Construction.swift */,
+			);
+			path = DFA;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +186,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0849CAFB2A536BBE00889957 /* Parser.swift in Sources */,
+				0849CAF72A531CF500889957 /* NFAState.swift in Sources */,
 				0849CADB2A5312B900889957 /* main.swift in Sources */,
+				0849CAE82A53140C00889957 /* RegexLiteral.swift in Sources */,
+				0849CAE32A5312C300889957 /* Regex.swift in Sources */,
+				0849CAF32A531C0E00889957 /* DFA.swift in Sources */,
+				0849CAFD2A536D6E00889957 /* Global.swift in Sources */,
+				0849CAEA2A53181D00889957 /* RegexAlternation.swift in Sources */,
+				0849CAF92A531D3C00889957 /* NFATransition.swift in Sources */,
+				0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */,
+				0849CAF02A531AA600889957 /* Thompson's Construction.swift in Sources */,
+				0849CAF52A531C1C00889957 /* Subset Construction.swift in Sources */,
+				0849CAFF2A536F8700889957 /* LexError.swift in Sources */,
+				0849CAE62A5312F900889957 /* NFA.swift in Sources */,
+				0849CAEE2A5319D800889957 /* RegexKleene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
