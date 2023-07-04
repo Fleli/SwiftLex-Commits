@@ -24,6 +24,7 @@
 		0849CAFF2A536F8700889957 /* LexError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFE2A536F8700889957 /* LexError.swift */; };
 		0849CB012A537F1600889957 /* DFAState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CB002A537F1600889957 /* DFAState.swift */; };
 		0849CB032A537FC300889957 /* DFATransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CB022A537FC300889957 /* DFATransition.swift */; };
+		0855D7252A5435AC0022D787 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855D7242A5435AC0022D787 /* Table.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		0849CAFE2A536F8700889957 /* LexError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexError.swift; sourceTree = "<group>"; };
 		0849CB002A537F1600889957 /* DFAState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFAState.swift; sourceTree = "<group>"; };
 		0849CB022A537FC300889957 /* DFATransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFATransition.swift; sourceTree = "<group>"; };
+		0855D7242A5435AC0022D787 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				0849CAE12A5312BE00889957 /* Regex */,
 				0849CAE42A5312F000889957 /* NFA */,
 				0849CAF12A531BF700889957 /* DFA */,
+				0855D7212A5434700022D787 /* Table */,
 			);
 			path = SwiftLex;
 			sourceTree = "<group>";
@@ -132,6 +135,14 @@
 				0849CAF42A531C1C00889957 /* Subset Construction.swift */,
 			);
 			path = DFA;
+			sourceTree = "<group>";
+		};
+		0855D7212A5434700022D787 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				0855D7242A5435AC0022D787 /* Table.swift */,
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +215,7 @@
 				0849CAEA2A53181D00889957 /* RegexAlternation.swift in Sources */,
 				0849CAF92A531D3C00889957 /* NFATransition.swift in Sources */,
 				0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */,
+				0855D7252A5435AC0022D787 /* Table.swift in Sources */,
 				0849CAF02A531AA600889957 /* Thompson's Construction.swift in Sources */,
 				0849CAF52A531C1C00889957 /* Subset Construction.swift in Sources */,
 				0849CAFF2A536F8700889957 /* LexError.swift in Sources */,

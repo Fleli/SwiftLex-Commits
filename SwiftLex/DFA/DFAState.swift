@@ -12,16 +12,27 @@ class DFAState: Hashable, CustomStringConvertible {
     
     var didFinish = false
     
-    weak var dfa: DFA? = nil
+    weak var dfa: DFA?
     
-    let id: Int
+    var id: Int
+    
+    init(_ nfaStates: Set<NFAState>, dfa: DFA) {
+        
+        self.nfaStates = nfaStates
+        
+        self.dfa = dfa
+        
+        self.id = dfa.stateCounter
+        dfa.stateCounter += 1
+        
+    }
     
     init(_ nfaStates: Set<NFAState>) {
         
         self.nfaStates = nfaStates
+        self.dfa = nil
         
-        self.id = Self.idCounter
-        Self.idCounter += 1
+        id = -1
         
     }
     
@@ -118,7 +129,5 @@ class DFAState: Hashable, CustomStringConvertible {
     static func == (lhs: DFAState, rhs: DFAState) -> Bool {
         return lhs === rhs
     }
-    
-    static var idCounter = 0
     
 }

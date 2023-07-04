@@ -1,9 +1,5 @@
 class NFAState: CustomStringConvertible, Hashable {
     
-    static func == (lhs: NFAState, rhs: NFAState) -> Bool {
-        return lhs === rhs
-    }
-    
     var description: String { "N\(id) \(isEntry ? "(ENTRY)" : "")\(isAccepting ? "(ACCEPTING)" : "")" }
     
     let id: Int
@@ -29,6 +25,10 @@ class NFAState: CustomStringConvertible, Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+    
+    static func == (lhs: NFAState, rhs: NFAState) -> Bool {
+        return lhs === rhs
     }
     
     static var idCounter = 0

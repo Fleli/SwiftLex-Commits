@@ -10,7 +10,7 @@ struct DFATransition: Hashable, CustomStringConvertible {
         self.newState = newState
         self.character = character
         
-        DFATransition.allTransitions.insert(self)
+        oldState.dfa!.allTransitions.insert(self)
         
     }
     
@@ -25,7 +25,5 @@ struct DFATransition: Hashable, CustomStringConvertible {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.character == rhs.character && lhs.newState === rhs.newState && lhs.oldState === rhs.oldState
     }
-    
-    static var allTransitions: Set<DFATransition> = []
     
 }

@@ -7,7 +7,7 @@
  
  */
 
-let input = "(a|b)*"
+let input = "a*&(b|c)"
 
 print("Input:", input, "\n")
 
@@ -23,8 +23,11 @@ NFATransition.allTransitions.forEach { print($0) }
 
 let dfa = nfa.generateDFA()
 
-print("\nDFA Transitions:", DFATransition.allTransitions.count)
-DFATransition.allTransitions.forEach { print($0) }
+print("\nDFA Transitions:", dfa.allTransitions.count)
+dfa.allTransitions.forEach { print($0) }
 
+let table = Table(dfa)
 
+print("")
+table.print()
 print("\n")
