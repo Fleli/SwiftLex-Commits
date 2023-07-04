@@ -1,11 +1,13 @@
 class DFA {
     
     private var entry: DFAState
-    private var allStates: Set<DFAState> = []
+    var allStates: Set<DFAState> = []
     
     var stateCounter = 2
     
     var allTransitions: Set<DFATransition> = []
+    
+    var stateCount: Int { allStates.count }
     
     init(_ entry: DFAState) {
         

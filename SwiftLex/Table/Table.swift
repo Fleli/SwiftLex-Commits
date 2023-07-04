@@ -19,14 +19,18 @@ struct Table {
     private func fillTable(_ dfa: DFA, _ entry: inout Set<Int>, _ accepting: inout Set<Int>) {
         
         let transitions = dfa.allTransitions
+        let count = dfa.stateCount + 1
         
-        self.simulatedDFA = Array<[Character : Int]>(repeating: [:], count: transitions.count)
+        self.simulatedDFA = Array<[Character : Int]>(repeating: [:], count: count)
         
         transitions.forEach { transition in
             
             let oldState = transition.oldState.id
             let newState = transition.newState.id
             let character = transition.character
+            
+            Swift.print(oldState, newState, character)
+            Swift.print(transitions.count)
             
             simulatedDFA[oldState][character] = newState
             

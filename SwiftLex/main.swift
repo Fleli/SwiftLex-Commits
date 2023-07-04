@@ -7,7 +7,7 @@
  
  */
 
-let input = "a*&(b|c)"
+let input = "a&a|a"
 
 print("Input:", input, "\n")
 
