@@ -2,6 +2,8 @@ extension NFA {
     
     func generateDFA() -> DFA {
         
+        tellEntryAndAccepting()
+        
         let entrySet = entry.epsilonClosure()
         let dfaEntry = DFAState(entrySet)
         

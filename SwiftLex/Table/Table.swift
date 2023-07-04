@@ -1,11 +1,20 @@
 struct Table {
     
-    var simulatedDFA: [[Character : Int]] = []
+    private var simulatedDFA: [[Character : Int]] = []
     
     var entry = -1
-    var accepting: Set<Int> = []
     
-    init(_ dfa: DFA) {
+    private var accepting: Set<Int> = []
+    
+    let specification: TokenSpecification
+    
+    var stringForTable: String {
+        return "\(simulatedDFA)"
+    }
+    
+    init(_ dfa: DFA, _ specification: TokenSpecification) {
+        
+        self.specification = specification
         
         var entry: Set<Int> = []
         var accepting: Set<Int> = []
@@ -13,6 +22,14 @@ struct Table {
         fillTable(dfa, &entry, &accepting)
         setEntryAndAccepting(entry, accepting)
         
+    }
+    
+    func getStateAtTransition(for char: Character, in state: Int) -> Int {
+        return simulatedDFA[state][char]  ??  0
+    }
+    
+    func isAccepting(_ state: Int) -> Bool {
+        return accepting.contains(state)
     }
     
     mutating
@@ -28,9 +45,6 @@ struct Table {
             let oldState = transition.oldState.id
             let newState = transition.newState.id
             let character = transition.character
-            
-            Swift.print(oldState, newState, character)
-            Swift.print(transitions.count)
             
             simulatedDFA[oldState][character] = newState
             
@@ -60,27 +74,6 @@ struct Table {
         self.entry = entry
         self.accepting = accepting
         
-    }
-    
-    func print() {
-        
-        Swift.print(simulatedDFA)
-        
-        Swift.print("Simulated DFA (Table)")
-        Swift.print("Entry is \(entry)")
-        Swift.print("Accepting is \(accepting)")
-        Swift.print("\nStates {")
-        
-        for (index) in (0 ..< table.simulatedDFA.count) {
-            
-            let state = table.simulatedDFA[index]
-            
-            Swift.print("\tState", index, "has transitions", state)
-            
-        }
-        
-        Swift.print("}")
-
     }
     
 }

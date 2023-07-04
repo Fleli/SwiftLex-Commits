@@ -1,33 +1,19 @@
+let input =
+"""
+    keyword         :       i&f|e&l&s&e
+    identifier      :       (a|b|c|d|e|f|i|u)*
+    integer         :       (0|1|2)*
+    space           :       [ ]
+"""
 
-/*
- 
- String     ->      Regex               Parsing                         parse
- Regex      ->      NFA                 Thompson's construction         generateNFA
- NFA        ->      DFA                 Subset Construction             generateDFA
- 
- */
+// MERK: Ved 'if' vil keyword matches (i stedet for identifier) fordi keyword kommer først. Bør se på muligheter for å fine-tune dette.
 
-let input = "a&a|a"
+let generator = try Generator(input, directory: "/Users/frederikedvardsen/Desktop")
 
-print("Input:", input, "\n")
+let program = "du0111b1  if"
 
-let regex = try input.parse()
+let tokens = generator.lex(program)
 
-print("Regex:", regex, "\n")
-
-let nfa = regex.generateNFA()
-nfa.tellEntryAndAccepting()
-
-print("NFAEntryClosure:", nfa.entry.epsilonClosure(), "\n")
-NFATransition.allTransitions.forEach { print($0) }
-
-let dfa = nfa.generateDFA()
-
-print("\nDFA Transitions:", dfa.allTransitions.count)
-dfa.allTransitions.forEach { print($0) }
-
-let table = Table(dfa)
-
+print("Tokens:\n")
+tokens.forEach { print("\t" + $0.type + "\t\t" + $0.content) }
 print("")
-table.print()
-print("\n")
