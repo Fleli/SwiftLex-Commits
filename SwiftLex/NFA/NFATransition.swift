@@ -4,7 +4,7 @@ struct NFATransition: CustomStringConvertible {
     let character: Character?
     let newState: NFAState
     
-    var description: String { "\(fromState?.id ?? 0) -> \(newState) @ \(character ?? "-")" }
+    var description: String { "\(fromState!) -> \(newState) @ \(character ?? "-")" }
     
     init(character: Character?, newState: NFAState, fromState: NFAState? = nil) {
         

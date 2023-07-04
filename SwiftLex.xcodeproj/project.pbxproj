@@ -22,6 +22,8 @@
 		0849CAFB2A536BBE00889957 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFA2A536BBE00889957 /* Parser.swift */; };
 		0849CAFD2A536D6E00889957 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFC2A536D6E00889957 /* Global.swift */; };
 		0849CAFF2A536F8700889957 /* LexError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAFE2A536F8700889957 /* LexError.swift */; };
+		0849CB012A537F1600889957 /* DFAState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CB002A537F1600889957 /* DFAState.swift */; };
+		0849CB032A537FC300889957 /* DFATransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CB022A537FC300889957 /* DFATransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +55,8 @@
 		0849CAFA2A536BBE00889957 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		0849CAFC2A536D6E00889957 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		0849CAFE2A536F8700889957 /* LexError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexError.swift; sourceTree = "<group>"; };
+		0849CB002A537F1600889957 /* DFAState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFAState.swift; sourceTree = "<group>"; };
+		0849CB022A537FC300889957 /* DFATransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFATransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				0849CAF22A531C0E00889957 /* DFA.swift */,
+				0849CB002A537F1600889957 /* DFAState.swift */,
+				0849CB022A537FC300889957 /* DFATransition.swift */,
 				0849CAF42A531C1C00889957 /* Subset Construction.swift */,
 			);
 			path = DFA;
@@ -191,8 +197,10 @@
 				0849CADB2A5312B900889957 /* main.swift in Sources */,
 				0849CAE82A53140C00889957 /* RegexLiteral.swift in Sources */,
 				0849CAE32A5312C300889957 /* Regex.swift in Sources */,
+				0849CB012A537F1600889957 /* DFAState.swift in Sources */,
 				0849CAF32A531C0E00889957 /* DFA.swift in Sources */,
 				0849CAFD2A536D6E00889957 /* Global.swift in Sources */,
+				0849CB032A537FC300889957 /* DFATransition.swift in Sources */,
 				0849CAEA2A53181D00889957 /* RegexAlternation.swift in Sources */,
 				0849CAF92A531D3C00889957 /* NFATransition.swift in Sources */,
 				0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */,

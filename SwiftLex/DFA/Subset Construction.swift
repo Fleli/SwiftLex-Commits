@@ -1,3 +1,20 @@
+extension NFA {
+    
+    func generateDFA() -> DFA {
+        
+        let entrySet = entry.epsilonClosure()
+        let dfaEntry = DFAState(entrySet)
+        
+        let dfa = DFA(dfaEntry)
+        
+        dfaEntry.generateDFATransitions()
+        
+        return dfa
+        
+    }
+    
+}
+
 extension NFAState {
     
     func epsilonClosure() -> Set<NFAState> {

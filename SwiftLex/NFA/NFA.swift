@@ -10,4 +10,9 @@ class NFA {
         
     }
     
+    func tellEntryAndAccepting() {
+        self.entry.isEntry = true
+        self.accepting.isAccepting = true
+    }
+    
 }

@@ -4,11 +4,21 @@ class NFAState: CustomStringConvertible, Hashable {
         return lhs === rhs
     }
     
-    var description: String { "\(id)" }
+    var description: String { "N\(id) \(isEntry ? "(ENTRY)" : "")\(isAccepting ? "(ACCEPTING)" : "")" }
     
-    let id = Int.random(in: 10_000 ..< 100_000)
+    let id: Int
     
     var transitions: [NFATransition] = []
+    
+    var isAccepting = false
+    var isEntry = false
+    
+    init() {
+        
+        self.id = Self.idCounter
+        Self.idCounter += 1
+        
+    }
     
     func addTransition(to newState: NFAState, at character: Character?) {
         
@@ -20,5 +30,7 @@ class NFAState: CustomStringConvertible, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+    
+    static var idCounter = 0
     
 }

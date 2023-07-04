@@ -36,8 +36,22 @@ class Parser {
             
             incrementIndex()
             
+            if (next == "(") {
+                
+                let parenthesizedRegex = try parse(3)
+                
+                guard self.next == ")" else {
+                    throw LexError.unexpectedEndOfInput
+                }
+                
+                incrementIndex()
+                
+                return parenthesizedRegex
+                
+            }
+            
             return RegexLiteral(literal: next)
-                    
+            
         }
         
         var regex = try parse(depth - 1)
