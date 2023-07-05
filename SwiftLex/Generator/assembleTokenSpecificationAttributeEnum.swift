@@ -6,6 +6,7 @@ extension Generator {
         enum TokenSpecificationAttribute {
             
             case discard
+            case selfType
             
         }
         """

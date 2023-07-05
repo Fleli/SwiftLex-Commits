@@ -66,6 +66,7 @@ class Generator {
             
             switch lhsArray[index] {
             case "@discard":    attributes.append(.discard)
+            case "@self":       attributes.append(.selfType)
             default:            throw LexError.wrongInputFormat
             }
             

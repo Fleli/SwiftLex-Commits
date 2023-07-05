@@ -52,6 +52,10 @@ extension Generator {
                     return nil
                 }
                 
+                if attributes.contains(.selfType) {
+                    return Token(type: content, content: content)
+                }
+                
                 return Token(type: type, content: content)
                 
             }

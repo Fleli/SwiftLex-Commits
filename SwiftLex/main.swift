@@ -2,10 +2,10 @@
 let input =
 """
 integer             :       [0-9]*
-keyword             :       if|else|while|func|var|let|try|catch
+@self keyword       :       if|else|while|func|var|let|try|catch
 identifier          :       [a-zA-Z][a-zA-Z0-9_]*
-control             :       [{}();=]
-equals              :       ==
+@self control       :       [{}();=]
+@self equals        :       ==
 @discard space      :       [ ]
 """
 
