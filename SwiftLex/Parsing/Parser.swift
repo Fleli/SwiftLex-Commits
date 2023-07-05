@@ -74,12 +74,12 @@ class Parser {
         
         switch (depth, next) {
             
-        case (_ , nil):                                                                                 char = nil
-        case (1, "*"):                                                                                  char = "*"
-        case (2, "&"):                                                                                  char = "&"
-        case (3, "|"):                                                                                  char = "|"
-        case (2 , let operation) where operation != "*" && operation != "&" && operation != "|":        char = "&"; index -= 1
-        default:                                                                                        char = nil
+            case (_ , nil):                                                                     char = nil
+            case (1, "*"):                                                                      char = "*"
+            case (2, "&"):                                                                      char = "&"
+            case (3, "|"):                                                                      char = "|"
+        case (2 , let operation) where operation != nil && !("*&|()".contains(operation!)):     char = "&"; index -= 1
+        default:                                                                                char = nil
             
         }
         
@@ -100,7 +100,8 @@ class Parser {
             let parenthesizedRegex = try parse(3)
             
             guard self.next == ")" else {
-                throw LexError.unexpectedEndOfInput(")")
+                print("Will throw. Parenthesized was \(parenthesizedRegex)")
+                throw LexError.unexpectedEndOfInput("Expected ), not \(self.next) (at \(index))")
             }
             
             incrementIndex()

@@ -82,7 +82,6 @@ extension Generator {
                 let sortedResults = results.sorted {
                     
                     if ($0.lastAccepting == $1.lastAccepting) {
-                        print("Equality between \\($0) and \\($1)")
                         return $0.simulator.specificationPrecedence > $1.simulator.specificationPrecedence
                     }
                     
