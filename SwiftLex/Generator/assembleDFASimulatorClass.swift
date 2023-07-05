@@ -11,6 +11,7 @@ extension Generator {
             private var input: String = ""
             
             var type: String { table.specification.type }
+            var attributes: [TokenSpecificationAttribute] { table.specification.attributes }
             
             init(_ table: Table) {
                 self.table = table

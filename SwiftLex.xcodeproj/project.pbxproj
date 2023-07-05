@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0818B6912A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0818B6902A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift */; };
+		0818B6932A56171B00CAC028 /* TokenSpecificationAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0818B6922A56171B00CAC028 /* TokenSpecificationAttribute.swift */; };
 		082572512A5476F800446711 /* FileAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082572502A5476F800446711 /* FileAssembler.swift */; };
 		0849CADB2A5312B900889957 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CADA2A5312B900889957 /* main.swift */; };
 		0849CAE32A5312C300889957 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849CAE22A5312C300889957 /* Regex.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0818B6902A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleTokenSpecificationAttributeEnum.swift; sourceTree = "<group>"; };
+		0818B6922A56171B00CAC028 /* TokenSpecificationAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSpecificationAttribute.swift; sourceTree = "<group>"; };
 		082572502A5476F800446711 /* FileAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAssembler.swift; sourceTree = "<group>"; };
 		0849CAD72A5312B900889957 /* SwiftLex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftLex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0849CADA2A5312B900889957 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 			children = (
 				085EFCFA2A544E1B0074283A /* Generator.swift */,
 				085EFCFC2A544E8A0074283A /* TokenSpecification.swift */,
+				0818B6922A56171B00CAC028 /* TokenSpecificationAttribute.swift */,
 				082572502A5476F800446711 /* FileAssembler.swift */,
 				08AEDCDB2A55C4CE00A1EA3B /* assembleInitialComments.swift */,
 				08AEDCDD2A55C4FE00A1EA3B /* assembleLexClass.swift */,
@@ -179,6 +184,7 @@
 				08AEDCE12A55C54000A1EA3B /* assembleTokenStruct.swift */,
 				08AEDCE32A55C55100A1EA3B /* assembleTableStruct.swift */,
 				08AEDCE52A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift */,
+				0818B6902A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -261,11 +267,13 @@
 				0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */,
 				08AEDCDC2A55C4CE00A1EA3B /* assembleInitialComments.swift in Sources */,
 				0855D7252A5435AC0022D787 /* Table.swift in Sources */,
+				0818B6932A56171B00CAC028 /* TokenSpecificationAttribute.swift in Sources */,
 				085EFCFB2A544E1B0074283A /* Generator.swift in Sources */,
 				082572512A5476F800446711 /* FileAssembler.swift in Sources */,
 				0849CAF02A531AA600889957 /* Thompson's Construction.swift in Sources */,
 				0849CAF52A531C1C00889957 /* Subset Construction.swift in Sources */,
 				08AEDCE02A55C52600A1EA3B /* assembleDFASimulatorClass.swift in Sources */,
+				0818B6912A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift in Sources */,
 				0849CAFF2A536F8700889957 /* LexError.swift in Sources */,
 				0849CAE62A5312F900889957 /* NFA.swift in Sources */,
 				0849CAEE2A5319D800889957 /* RegexKleene.swift in Sources */,

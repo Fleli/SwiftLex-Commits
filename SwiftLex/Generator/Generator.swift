@@ -28,29 +28,26 @@ class Generator {
         let lines = lexSpecification.split(separator: "\n")
         
         for line in lines {
-            
-            let split = try findTypeAndRegex(line)
-            
-            let type = split.type
-            let regex = split.regex
-            
-            let specification = TokenSpecification(type, regex)
-            
-            tokenSpecifications.append(specification)
-            
+            try parseLine(line)
         }
-        
-        print("Specs {\n")
-        
-        tokenSpecifications.forEach { spec in
-            print("\t" + spec.regex)
-        }
-        
-        print("\n}")
         
     }
     
-    private func findTypeAndRegex(_ line: Substring) throws -> (type: String, regex: String) {
+    private func parseLine(_ line: Substring) throws {
+        
+        let split = try findTypeAndRegex(line)
+        
+        let attributes = split.attributes
+        let type = split.type
+        let regex = split.regex
+        
+        let specification = TokenSpecification(type, regex, attributes)
+        
+        tokenSpecifications.append(specification)
+        
+    }
+    
+    private func findTypeAndRegex(_ line: Substring) throws -> (attributes: [TokenSpecificationAttribute], type: String, regex: String) {
         
         let split = line.split(separator: ":", maxSplits: 1, omittingEmptySubsequences: false)
         
@@ -58,14 +55,41 @@ class Generator {
             throw LexError.wrongInputFormat
         }
         
-        let type = split[0].trimmingCharacters(in: .whitespaces)
+        let lhsTrimmed = split[0].trimmingCharacters(in: .whitespaces)
+        let lhsArray = try lhsArray(of: lhsTrimmed)
+        
+        let type = String(lhsArray.last!)
+        
+        var attributes: [TokenSpecificationAttribute] = []
+        
+        for (index) in (0 ..< lhsArray.count - 1) {
+            
+            switch lhsArray[index] {
+            case "@discard":    attributes.append(.discard)
+            default:            throw LexError.wrongInputFormat
+            }
+            
+        }
+        
         let regex = split[1].trimmingCharacters(in: .whitespaces)
         
         guard type.count > 0, regex.count > 0 else {
             throw LexError.tooShort
         }
         
-        return (type, regex)
+        return (attributes, type, regex)
+        
+    }
+    
+    private func lhsArray(of trimmed: String) throws -> [Substring] {
+        
+        let array = trimmed.split(separator: " ")
+        
+        guard (array.count > 0) else {
+            throw LexError.wrongInputFormat
+        }
+        
+        return array
         
     }
     
