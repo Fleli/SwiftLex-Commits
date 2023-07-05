@@ -8,7 +8,9 @@ extension Generator {
             private typealias SimulatorResult = (simulator: DFASimulator, lastAccepting: Int)
             
             private var index = 0
-            private var currentStart = 0
+        
+            private var line = 0
+            private var col = 0
             
             private var input: String = ""
             private var tokens: [Token] = []
@@ -20,8 +22,10 @@ extension Generator {
             
             public func lex(_ input: String) -> [Token] {
                 
-                self.currentStart = 0
                 self.index = 0
+        
+                self.line = 0
+                self.col = 0
                 
                 self.input = input
                 self.tokens = []
@@ -46,17 +50,23 @@ extension Generator {
                 let type = maximalMunch.simulator.type
                 let content = sliceInput(with: index, maximalMunch.lastAccepting)
                 
+                let startCol = index
+            
                 adjustIndices(maximalMunch)
+        
+                let endCol = index - 1
                 
                 if (attributes.contains(.discard)) {
                     return nil
                 }
                 
+                let region = Region(line, startCol, line, endCol)
+                
                 if attributes.contains(.selfType) {
-                    return Token(type: content, content: content)
+                    return Token(content, content, region)
                 }
                 
-                return Token(type: type, content: content)
+                return Token(type, content, region)
                 
             }
             
@@ -91,7 +101,6 @@ extension Generator {
                 let lastAccepting = result.lastAccepting
                 
                 index = lastAccepting
-                currentStart = lastAccepting
                 
             }
             

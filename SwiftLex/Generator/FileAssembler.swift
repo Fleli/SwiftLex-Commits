@@ -28,6 +28,8 @@ extension Generator {
             
             \(assembleTokenStruct())
             
+            \(assembleRegionStruct())
+            
             \(assembleTableStruct())
             
             \(assembleTokenSpecificationStruct())
