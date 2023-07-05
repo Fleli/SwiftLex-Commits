@@ -1,16 +1,17 @@
 let input =
 """
-    keyword         :       i&f|e&l&s&e
-    identifier      :       (a|b|c|d|e|f|i|u)*
-    integer         :       (0|1|2)*
+    identifier      :       [a-z]*
+    number          :       [0-9]*
     space           :       [ ]
+    control         :       [(){}=;:]
+    equals          :       =&=
 """
 
 // MERK: Ved 'if' vil keyword matches (i stedet for identifier) fordi keyword kommer først. Bør se på muligheter for å fine-tune dette.
 
 let generator = try Generator(input, directory: "/Users/frederikedvardsen/Desktop")
 
-let program = "du0111b1  if"
+let program = "if (x==6) { y=72; }"
 
 let tokens = generator.lex(program)
 

@@ -1,6 +1,6 @@
 enum LexError: Error {
     
-    case unexpectedEndOfInput
+    case unexpectedEndOfInput(_ expected: String)
     case encounteredUnknown
     case wrongInputFormat
     case tooShort

@@ -84,7 +84,7 @@ class Parser {
     private func parseFactor() throws -> Regex {
         
         guard let next = next else {
-            throw LexError.unexpectedEndOfInput
+            throw LexError.unexpectedEndOfInput("factor")
         }
         
         incrementIndex()
@@ -94,7 +94,7 @@ class Parser {
             let parenthesizedRegex = try parse(3)
             
             guard self.next == ")" else {
-                throw LexError.unexpectedEndOfInput
+                throw LexError.unexpectedEndOfInput(")")
             }
             
             incrementIndex()
@@ -103,7 +103,17 @@ class Parser {
             
         } else if (next == "[") {
             
-            return try parseRangeDescription()
+            let rangeDescribedRegex = try parseRangeDescription()
+            
+            print("Encountered \(self.next)")
+            
+            guard self.next == "]" else {
+                throw LexError.unexpectedEndOfInput("]")
+            }
+            
+            incrementIndex()
+            
+            return rangeDescribedRegex
             
         }
         
@@ -113,48 +123,100 @@ class Parser {
     
     private func parseRangeDescription() throws -> Regex {
         
-        var chars: [Character] = []
+        // På dette punktet er ikke next = [, men etter det igjen.
         
-        while let next = next, next != "]" {
+        var charsInRangeDescription: [Character] = []
+        
+        var buffer: [Character?] = [nil, nil, nil]
+        
+        fillBuffer(&buffer)
+        
+        while buffer[0] != "]" {
             
-            incrementIndex()
+            switch ( buffer[0], buffer[1], buffer[2] ) {
+                
+            case (nil, nil, nil):
+                
+                throw LexError.unexpectedEndOfInput("] or chars")
+                
+            case (let start , "-" , let end) where (end != "]"):
+                
+                let chars = try getCharsInClosedRange(from: start!, to: end!)
+                charsInRangeDescription += chars
+                
+                incrementIndex(3)
+                
+            case (let start , _ , _):
+                
+                guard let start = start else {
+                    fatalError("")
+                }
+                
+                charsInRangeDescription.append(start)
+                incrementIndex()
+                
+            }
             
-            chars.append(next)
+            fillBuffer(&buffer)
             
         }
         
-        if next == "]" {
-            incrementIndex()
-        } else {
-            throw LexError.unexpectedEndOfInput
-        }
-        
-        guard let first = chars.first else {
+        guard (charsInRangeDescription.count > 0) else {
             throw LexError.wrongInputFormat
         }
         
-        var regex: any Regex = RegexLiteral(literal: first)
-        
-        for (index) in (1 ..< chars.count) {
-            let char = chars[index]
-            let literal = RegexLiteral(literal: char)
-            regex = RegexAlternation(regex, literal)
-        }
+        let regex = produceRegexFrom(chars: charsInRangeDescription)
         
         return regex
         
     }
     
-    private func fillRange(_ range: inout [Character?]) {
+    private func fillBuffer(_ buffer: inout [Character?]) {
         
-        for (indexOffset) in (0 ... 2) {
+        for (offset) in (0 ... 2) {
+            let char = input[index + offset]
+            buffer[offset] = char
+        }
+        
+    }
+    
+    private func getCharsInClosedRange(from start: Character, to end: Character) throws -> [Character] {
+        
+        guard let asciiStart = start.asciiValue, let asciiEnd = end.asciiValue, asciiStart <= asciiEnd else {
+            throw LexError.wrongInputFormat
+        }
+        
+        var chars: [Character] = []
+        
+        for (ascii) in (asciiStart ... asciiEnd) {
             
-            let index = self.index + indexOffset
-            let character = self.input[index]
+            let unicodeScalar = UnicodeScalar(ascii)
+            let character = Character(unicodeScalar)
             
-            range[indexOffset] = character
+            chars.append(character)
             
         }
+        
+        return chars
+        
+    }
+    
+    private func produceRegexFrom(chars: [Character]) -> Regex {
+        
+        let first = chars[0]
+        
+        var regex: any Regex = RegexLiteral(literal: first)
+        
+        for (charIndex) in (1 ..< chars.count) {
+            
+            let char = chars[charIndex]
+            let literal = RegexLiteral(literal: char)
+            
+            regex = RegexAlternation(regex, literal)
+            
+        }
+        
+        return regex
         
     }
     
