@@ -2,26 +2,27 @@ import Foundation
 
 class Generator {
     
-    var tokenSpecifications: [TokenSpecification] = []
-    var tables: [Table] = []
+    private var tokenSpecifications: [TokenSpecification] = []
+    private var tables: [Table] = []
+    private let directory: String
     
-    let directory: String
+    public static func generate(with lexSpecification: String, directory: String) throws {
+        
+        let _ = try Generator(lexSpecification, directory: directory)
+        
+    }
     
-    var lexer: Lexer? = nil
-    
-    init(_ lexSpecification: String, directory: String) throws {
+    private init(_ lexSpecification: String, directory: String) throws {
         
         self.directory = directory
         
         try parse(lexSpecification)
         try generateTables()
         
-        self.lexer = Lexer(tables)
+        let lexerFile = self.generateLexer(with: tables)
         
-    }
-    
-    func lex(_ input: String) -> [Token] {
-        return lexer!.lex(input)
+        createFiles(("lexfile", lexerFile))
+        
     }
     
     private func parse(_ lexSpecification: String) throws {
@@ -82,9 +83,11 @@ class Generator {
         
         let input = specification.regex
         
-        let dfa = try input.parse().generateNFA().generateDFA()
-        
-        let table = Table(dfa, specification)
+        let table = try input
+            .parse()
+            .generateNFA()
+            .generateDFA()
+            .generateTable(with: specification)
         
         tables.append(table)
         
@@ -92,13 +95,14 @@ class Generator {
     
     private func createFiles(_ files: (name: String, content: String) ...) {
         
+        let manager = FileManager()
+        
         for file in files {
             
-            let manager = FileManager()
-            
             let path = directory + "/\(file.name).swift"
-            
             let result = manager.createFile(atPath: path, contents: file.content.data(using: .ascii))
+            
+            print("Created \(file.name): \(result)")
             
         }
         
