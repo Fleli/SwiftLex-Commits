@@ -13,7 +13,7 @@ struct Table {
     }
     
     var tableInitializerString: String {
-        "Table(\(simulatedDFA), \(entry), \(accepting), \(specification.initializerString))"
+        "Table([[Character : Int]](\(simulatedDFA)), \(entry), \(accepting), \(specification.initializerString))"
     }
     
     init(_ specification: TokenSpecification) {

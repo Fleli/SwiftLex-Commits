@@ -70,14 +70,20 @@ class Parser {
     
     private func getOperator(at depth: Int) throws -> Character? {
         
+        let char: Character?
+        
         switch (depth, next) {
             
-        case (1, "*"):      return "*"
-        case (2, "&"):      return "&"
-        case (3, "|"):      return "|"
-        default:            return nil
+        case (_ , nil):                                                                                 char = nil
+        case (1, "*"):                                                                                  char = "*"
+        case (2, "&"):                                                                                  char = "&"
+        case (3, "|"):                                                                                  char = "|"
+        case (2 , let operation) where operation != "*" && operation != "&" && operation != "*":        char = "&"; index -= 1
+        default:                                                                                        char = nil
             
         }
+        
+        return char
         
     }
     
@@ -104,8 +110,6 @@ class Parser {
         } else if (next == "[") {
             
             let rangeDescribedRegex = try parseRangeDescription()
-            
-            print("Encountered \(self.next)")
             
             guard self.next == "]" else {
                 throw LexError.unexpectedEndOfInput("]")

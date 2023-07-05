@@ -103,7 +103,7 @@
 				0849CAFC2A536D6E00889957 /* Global.swift */,
 				0849CAFE2A536F8700889957 /* LexError.swift */,
 				085EFCF92A544E170074283A /* Generator */,
-				0849CAE12A5312BE00889957 /* Regex */,
+				0849CAE12A5312BE00889957 /* Parsing */,
 				0849CAE42A5312F000889957 /* NFA */,
 				0849CAF12A531BF700889957 /* DFA */,
 				0855D7212A5434700022D787 /* Table */,
@@ -111,7 +111,7 @@
 			path = SwiftLex;
 			sourceTree = "<group>";
 		};
-		0849CAE12A5312BE00889957 /* Regex */ = {
+		0849CAE12A5312BE00889957 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
 				0849CAFA2A536BBE00889957 /* Parser.swift */,
@@ -121,7 +121,7 @@
 				0849CAEB2A53191C00889957 /* RegexConcatenation.swift */,
 				0849CAED2A5319D800889957 /* RegexKleene.swift */,
 			);
-			path = Regex;
+			path = Parsing;
 			sourceTree = "<group>";
 		};
 		0849CAE42A5312F000889957 /* NFA */ = {

@@ -6,13 +6,11 @@ class Generator {
     private var tables: [Table] = []
     private let directory: String
     
-    public static func generate(with lexSpecification: String, directory: String) throws {
-        
-        let _ = try Generator(lexSpecification, directory: directory)
-        
+    public static func generate(with lexSpecification: String, directory: String, fileName: String = "lexfile") throws {
+        let _ = try Generator(lexSpecification, directory: directory, fileName)
     }
     
-    private init(_ lexSpecification: String, directory: String) throws {
+    private init(_ lexSpecification: String, directory: String, _ fileName: String) throws {
         
         self.directory = directory
         
@@ -21,7 +19,7 @@ class Generator {
         
         let lexerFile = self.generateLexer(with: tables)
         
-        createFiles(("lexfile", lexerFile))
+        createFiles((fileName, lexerFile))
         
     }
     
