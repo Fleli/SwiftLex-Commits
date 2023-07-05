@@ -17,7 +17,7 @@ class Generator {
         try parse(lexSpecification)
         try generateTables()
         
-        let lexerFile = self.generateLexer(with: tables)
+        let lexerFile = self.generateLexer(with: tables, fileName: fileName)
         
         createFiles((fileName, lexerFile))
         
@@ -29,10 +29,10 @@ class Generator {
         
         for line in lines {
             
-            let typeAndRegex = try findTypeAndRegex(line)
+            let split = try findTypeAndRegex(line)
             
-            let type = typeAndRegex.type
-            let regex = typeAndRegex.regex
+            let type = split.type
+            let regex = split.regex
             
             let specification = TokenSpecification(type, regex)
             

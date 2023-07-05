@@ -29,6 +29,12 @@
 		0855D7252A5435AC0022D787 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0855D7242A5435AC0022D787 /* Table.swift */; };
 		085EFCFB2A544E1B0074283A /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085EFCFA2A544E1B0074283A /* Generator.swift */; };
 		085EFCFD2A544E8A0074283A /* TokenSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085EFCFC2A544E8A0074283A /* TokenSpecification.swift */; };
+		08AEDCDC2A55C4CE00A1EA3B /* assembleInitialComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCDB2A55C4CE00A1EA3B /* assembleInitialComments.swift */; };
+		08AEDCDE2A55C4FE00A1EA3B /* assembleLexClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCDD2A55C4FE00A1EA3B /* assembleLexClass.swift */; };
+		08AEDCE02A55C52600A1EA3B /* assembleDFASimulatorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCDF2A55C52600A1EA3B /* assembleDFASimulatorClass.swift */; };
+		08AEDCE22A55C54000A1EA3B /* assembleTokenStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCE12A55C54000A1EA3B /* assembleTokenStruct.swift */; };
+		08AEDCE42A55C55100A1EA3B /* assembleTableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCE32A55C55100A1EA3B /* assembleTableStruct.swift */; };
+		08AEDCE62A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCE52A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +73,12 @@
 		0855D7242A5435AC0022D787 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		085EFCFA2A544E1B0074283A /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		085EFCFC2A544E8A0074283A /* TokenSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSpecification.swift; sourceTree = "<group>"; };
+		08AEDCDB2A55C4CE00A1EA3B /* assembleInitialComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleInitialComments.swift; sourceTree = "<group>"; };
+		08AEDCDD2A55C4FE00A1EA3B /* assembleLexClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleLexClass.swift; sourceTree = "<group>"; };
+		08AEDCDF2A55C52600A1EA3B /* assembleDFASimulatorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleDFASimulatorClass.swift; sourceTree = "<group>"; };
+		08AEDCE12A55C54000A1EA3B /* assembleTokenStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleTokenStruct.swift; sourceTree = "<group>"; };
+		08AEDCE32A55C55100A1EA3B /* assembleTableStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleTableStruct.swift; sourceTree = "<group>"; };
+		08AEDCE52A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleTokenSpecificationStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +173,12 @@
 				085EFCFA2A544E1B0074283A /* Generator.swift */,
 				085EFCFC2A544E8A0074283A /* TokenSpecification.swift */,
 				082572502A5476F800446711 /* FileAssembler.swift */,
+				08AEDCDB2A55C4CE00A1EA3B /* assembleInitialComments.swift */,
+				08AEDCDD2A55C4FE00A1EA3B /* assembleLexClass.swift */,
+				08AEDCDF2A55C52600A1EA3B /* assembleDFASimulatorClass.swift */,
+				08AEDCE12A55C54000A1EA3B /* assembleTokenStruct.swift */,
+				08AEDCE32A55C55100A1EA3B /* assembleTableStruct.swift */,
+				08AEDCE52A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -233,15 +251,21 @@
 				0849CAF32A531C0E00889957 /* DFA.swift in Sources */,
 				085EFCFD2A544E8A0074283A /* TokenSpecification.swift in Sources */,
 				0849CAFD2A536D6E00889957 /* Global.swift in Sources */,
+				08AEDCE22A55C54000A1EA3B /* assembleTokenStruct.swift in Sources */,
+				08AEDCDE2A55C4FE00A1EA3B /* assembleLexClass.swift in Sources */,
 				0849CB032A537FC300889957 /* DFATransition.swift in Sources */,
+				08AEDCE62A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift in Sources */,
 				0849CAEA2A53181D00889957 /* RegexAlternation.swift in Sources */,
+				08AEDCE42A55C55100A1EA3B /* assembleTableStruct.swift in Sources */,
 				0849CAF92A531D3C00889957 /* NFATransition.swift in Sources */,
 				0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */,
+				08AEDCDC2A55C4CE00A1EA3B /* assembleInitialComments.swift in Sources */,
 				0855D7252A5435AC0022D787 /* Table.swift in Sources */,
 				085EFCFB2A544E1B0074283A /* Generator.swift in Sources */,
 				082572512A5476F800446711 /* FileAssembler.swift in Sources */,
 				0849CAF02A531AA600889957 /* Thompson's Construction.swift in Sources */,
 				0849CAF52A531C1C00889957 /* Subset Construction.swift in Sources */,
+				08AEDCE02A55C52600A1EA3B /* assembleDFASimulatorClass.swift in Sources */,
 				0849CAFF2A536F8700889957 /* LexError.swift in Sources */,
 				0849CAE62A5312F900889957 /* NFA.swift in Sources */,
 				0849CAEE2A5319D800889957 /* RegexKleene.swift in Sources */,
