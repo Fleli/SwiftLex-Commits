@@ -37,23 +37,26 @@ class Generator {
         
         let split = try findTypeAndRegex(line)
         
+        let specificationPrecedence = split.specificationPrecedence
         let attributes = split.attributes
         let type = split.type
         let regex = split.regex
         
-        let specification = TokenSpecification(type, regex, attributes)
+        let specification = TokenSpecification(specificationPrecedence, type, regex, attributes)
         
         tokenSpecifications.append(specification)
         
     }
     
-    private func findTypeAndRegex(_ line: Substring) throws -> (attributes: [TokenSpecificationAttribute], type: String, regex: String) {
+    private func findTypeAndRegex(_ line: Substring) throws -> (specificationPrecedence: Int, attributes: [TokenSpecificationAttribute], type: String, regex: String) {
         
         let split = line.split(separator: ":", maxSplits: 1, omittingEmptySubsequences: false)
         
         guard split.count == 2 else {
             throw LexError.wrongInputFormat
         }
+        
+        var specificationPrecedence = 0
         
         let lhsTrimmed = split[0].trimmingCharacters(in: .whitespaces)
         let lhsArray = try lhsArray(of: lhsTrimmed)
@@ -64,10 +67,20 @@ class Generator {
         
         for (index) in (0 ..< lhsArray.count - 1) {
             
-            switch lhsArray[index] {
+            let string = String(lhsArray[index])
+            
+            switch string {
+                
             case "@discard":    attributes.append(.discard)
             case "@self":       attributes.append(.selfType)
-            default:            throw LexError.wrongInputFormat
+            case var string:
+                
+                guard (string.count > 0), (string.removeFirst() == "@"), let precedence = Int(string) else {
+                    throw LexError.wrongInputFormat
+                }
+                
+                specificationPrecedence = precedence
+                
             }
             
         }
@@ -78,7 +91,7 @@ class Generator {
             throw LexError.tooShort
         }
         
-        return (attributes, type, regex)
+        return (specificationPrecedence, attributes, type, regex)
         
     }
     

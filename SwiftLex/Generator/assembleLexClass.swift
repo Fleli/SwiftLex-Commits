@@ -8,7 +8,7 @@ extension Generator {
             private typealias SimulatorResult = (simulator: DFASimulator, lastAccepting: Int)
             
             private var index = 0
-        
+            
             private var line = 0
             private var col = 0
             
@@ -23,7 +23,7 @@ extension Generator {
             public func lex(_ input: String) -> [Token] {
                 
                 self.index = 0
-        
+                
                 self.line = 0
                 self.col = 0
                 
@@ -79,7 +79,16 @@ extension Generator {
                     results.append((simulator, lastAccepting))
                 }
                 
-                let sortedResults = results.sorted { $0.lastAccepting > $1.lastAccepting }
+                let sortedResults = results.sorted {
+                    
+                    if ($0.lastAccepting == $1.lastAccepting) {
+                        print("Equality between \\($0) and \\($1)")
+                        return $0.simulator.specificationPrecedence > $1.simulator.specificationPrecedence
+                    }
+                    
+                    return $0.lastAccepting > $1.lastAccepting
+                    
+                }
                 
                 return sortedResults[0]
                 

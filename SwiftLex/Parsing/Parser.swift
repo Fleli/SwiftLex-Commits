@@ -78,7 +78,7 @@ class Parser {
         case (1, "*"):                                                                                  char = "*"
         case (2, "&"):                                                                                  char = "&"
         case (3, "|"):                                                                                  char = "|"
-        case (2 , let operation) where operation != "*" && operation != "&" && operation != "*":        char = "&"; index -= 1
+        case (2 , let operation) where operation != "*" && operation != "&" && operation != "|":        char = "&"; index -= 1
         default:                                                                                        char = nil
             
         }

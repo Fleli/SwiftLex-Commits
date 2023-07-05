@@ -12,6 +12,7 @@ extension Generator {
             
             var type: String { table.specification.type }
             var attributes: [TokenSpecificationAttribute] { table.specification.attributes }
+            var specificationPrecedence: Int { table.specification.specificationPrecedence }
             
             init(_ table: Table) {
                 self.table = table
