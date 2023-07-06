@@ -19,7 +19,7 @@ class Generator {
         
         let lexerFile = self.generateLexer(with: tables, fileName: fileName)
         
-        createFiles((fileName, lexerFile))
+        createFiles(fileName, lexerFile)
         
     }
     
@@ -130,18 +130,14 @@ class Generator {
         
     }
     
-    private func createFiles(_ files: (name: String, content: String) ...) {
+    private func createFiles(_ fileName: String, _ content: String) {
         
         let manager = FileManager()
+    
+        let path = directory + "/\(fileName).swift"
+        let result = manager.createFile(atPath: path, contents: content.data(using: .ascii))
         
-        for file in files {
-            
-            let path = directory + "/\(file.name).swift"
-            let result = manager.createFile(atPath: path, contents: file.content.data(using: .ascii))
-            
-            print("Created \(file.name): \(result)")
-            
-        }
+        print("Created \(fileName): \(result)")
         
     }
     

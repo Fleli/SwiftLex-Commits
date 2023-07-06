@@ -50,10 +50,17 @@ extension Generator {
                 let type = maximalMunch.simulator.type
                 let content = try sliceInput(with: index, maximalMunch.lastAccepting)
                 
+                let newLines = content.filter {$0 == "\\n"} .count
+                
+                if (newLines > 0) {
+                    col = 0
+                    line += newLines
+                }
+                
                 let startCol = index
-            
+                
                 adjustIndices(maximalMunch)
-        
+                
                 let endCol = index - 1
                 
                 if (attributes.contains(.discard)) {
