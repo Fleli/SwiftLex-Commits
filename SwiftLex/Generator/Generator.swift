@@ -120,6 +120,7 @@ class Generator {
         let input = specification.regex
         
         let table = try input
+            .generateTokens()
             .parse()
             .generateNFA()
             .generateDFA()

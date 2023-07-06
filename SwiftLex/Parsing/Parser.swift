@@ -1,28 +1,20 @@
-extension String {
-    
-    func parse() throws -> Regex {
-        
-        let parser = Parser()
-        
-        return try parser.parse(self)
-        
-    }
-    
-}
-
 class Parser {
     
     private var index = 0
-    private var input = ""
+    private var input = TokenList()
     
-    private var next: Character? { input[index] }
+    private var next: Token? { input[index] }
     
-    func parse(_ input: String) throws -> Regex {
+    func parse(_ input: TokenList) throws -> Regex {
         
         self.input = input
         self.index = 0
         
-        return try parse(3)
+        let regex = try parse(3)
+        
+        print(regex.description)
+        
+        return regex
         
     }
     
@@ -40,7 +32,7 @@ class Parser {
             
             incrementIndex()
             
-            if (operation == "*") {
+            if (operation.content == "*") {
                 
                 regex = RegexKleene(regex)
                 
@@ -48,7 +40,7 @@ class Parser {
                 
                 let arg2 = try parse(depth - 1)
                 
-                switch (operation) {
+                switch (operation.content) {
                     
                 case "&":       regex = RegexConcatenation(regex, arg2)
                 case "|":       regex = RegexAlternation(regex, arg2)
@@ -68,22 +60,28 @@ class Parser {
         index += number
     }
     
-    private func getOperator(at depth: Int) throws -> Character? {
+    private func getOperator(at depth: Int) throws -> Token? {
         
-        let char: Character?
+        guard let next = next else {
+            return nil
+        }
         
-        switch (depth, next) {
+        if [ (1 , "*") , (2 , "&") , (3 , "|") ].contains(where: { $0 == (depth , next.content) } ) {
+            return next
+        }
+        
+        if "*&|".contains(next.content) && next.isOperator {
+            return nil
+        }
+        
+        if (depth == 2) {
             
-            case (_ , nil):                                                                     char = nil
-            case (1, "*"):                                                                      char = "*"
-            case (2, "&"):                                                                      char = "&"
-            case (3, "|"):                                                                      char = "|"
-        case (2 , let operation) where operation != nil && !("*&|()".contains(operation!)):     char = "&"; index -= 1
-        default:                                                                                char = nil
+            index -= 1
+            return Token(true, "&")
             
         }
         
-        return char
+        return nil
         
     }
     
@@ -95,11 +93,11 @@ class Parser {
         
         incrementIndex()
         
-        if (next == "(") {
+        if (next == Token(true, "(")) {
             
             let parenthesizedRegex = try parse(3)
             
-            guard self.next == ")" else {
+            guard self.next == Token(true, ")") else {
                 print("Will throw. Parenthesized was \(parenthesizedRegex)")
                 throw LexError.unexpectedEndOfInput("Expected ), not \(self.next) (at \(index))")
             }
@@ -108,11 +106,11 @@ class Parser {
             
             return parenthesizedRegex
             
-        } else if (next == "[") {
+        } else if (next == Token(true, "[")) {
             
             let rangeDescribedRegex = try parseRangeDescription()
             
-            guard self.next == "]" else {
+            guard self.next == Token(true, "]") else {
                 throw LexError.unexpectedEndOfInput("]")
             }
             
@@ -122,7 +120,7 @@ class Parser {
             
         }
         
-        return RegexLiteral(literal: next)
+        return RegexLiteral(literal: next.content)
         
     }
     
@@ -132,11 +130,11 @@ class Parser {
         
         var charsInRangeDescription: [Character] = []
         
-        var buffer: [Character?] = [nil, nil, nil]
+        var buffer: [Token?] = [nil, nil, nil]
         
         fillBuffer(&buffer)
         
-        while buffer[0] != "]" {
+        while buffer[0] != Token(true, "]") {
             
             switch ( buffer[0], buffer[1], buffer[2] ) {
                 
@@ -144,9 +142,9 @@ class Parser {
                 
                 throw LexError.unexpectedEndOfInput("] or chars")
                 
-            case (let start , "-" , let end) where (end != "]"):
+            case (let start , Token(false, "-") , let end) where (end != Token(true, "]")):
                 
-                let chars = try getCharsInClosedRange(from: start!, to: end!)
+                let chars = try getCharsInClosedRange(from: start!.content, to: end!.content)
                 charsInRangeDescription += chars
                 
                 incrementIndex(3)
@@ -157,7 +155,7 @@ class Parser {
                     fatalError("")
                 }
                 
-                charsInRangeDescription.append(start)
+                charsInRangeDescription.append(start.content)
                 incrementIndex()
                 
             }
@@ -176,7 +174,7 @@ class Parser {
         
     }
     
-    private func fillBuffer(_ buffer: inout [Character?]) {
+    private func fillBuffer(_ buffer: inout [Token?]) {
         
         for (offset) in (0 ... 2) {
             let char = input[index + offset]

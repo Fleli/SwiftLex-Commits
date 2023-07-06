@@ -2,10 +2,9 @@
 let input =
 """
 integer                 :           [0-9]*
-integer                 :           0x[0-9A-Fa-f][0-9A-Fa-f]*|0b[01][01]*
 @2 @self keyword        :           if|else|while|func|var|let|try|catch|for|in
 @1 identifier           :           [a-zA-Z][a-zA-Z0-9_]*
-@self control           :           [{}();:,.=!?@+*/%-]
+@self control           :           [{}();:,.=!?@+*/%-\\[\\]]
 @self ellipsis          :           ...
 @self equals            :           ==
 @discard space          :           [ ]
@@ -15,8 +14,6 @@ integer                 :           0x[0-9A-Fa-f][0-9A-Fa-f]*|0b[01][01]*
 // transitions fra alle. Det betyr at space for n tegn i regex-range er O(n^2). Dersom hvert av de 62 tegnene merges til én
 // state, vil det bare kreves 62 outputs fra én state, så da blir space-kompleksitet bare O(n), som drastisk vil redusere kompilerings-
 // tid for produktet.
-
-// Dessuten bør parsingen støtte escape sequences, f.eks. \]
 
 // I tillegg bør flere regex-operatorer legges til, spesielt '+' ("minst én") og [^...] ("hva som helst, utenom ...")
 // Sistnevnte krever nok en smartere måte å gjøre NFA/DFA transitions på: Kanskje må det også være en transition for "ikke ..."?
