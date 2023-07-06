@@ -20,7 +20,7 @@ extension Generator {
         \(stringOfSimulatorInitializers)
             ]
             
-            public func lex(_ input: String) -> [Token] {
+            public func lex(_ input: String) throws -> [Token] {
                 
                 self.index = 0
                 
@@ -32,7 +32,7 @@ extension Generator {
                 
                 while (index < input.count) {
                     
-                    if let token = nextToken() {
+                    if let token = try nextToken() {
                         tokens.append(token)
                     }
                     
@@ -42,13 +42,13 @@ extension Generator {
                 
             }
             
-            private func nextToken() -> Token? {
+            private func nextToken() throws -> Token? {
                 
                 let maximalMunch = simulateDFAs()
                 
                 let attributes = maximalMunch.simulator.attributes
                 let type = maximalMunch.simulator.type
-                let content = sliceInput(with: index, maximalMunch.lastAccepting)
+                let content = try sliceInput(with: index, maximalMunch.lastAccepting)
                 
                 let startCol = index
             
@@ -93,10 +93,14 @@ extension Generator {
                 
             }
             
-            private func sliceInput(with index: Int, _ lastAccepting: Int) -> String {
+            private func sliceInput(with index: Int, _ lastAccepting: Int) throws -> String {
                 
                 let startIndex = input.index(input.startIndex, offsetBy: index)
                 let endIndex = input.index(input.startIndex, offsetBy: lastAccepting)
+                
+                guard (endIndex > startIndex) else {
+                    throw LexError.invalidCharacter
+                }
                 
                 let slice = input[startIndex ..< endIndex]
                 
@@ -107,7 +111,6 @@ extension Generator {
             private func adjustIndices(_ result: SimulatorResult) {
                 
                 let lastAccepting = result.lastAccepting
-                
                 index = lastAccepting
                 
             }

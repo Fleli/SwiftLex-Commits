@@ -36,6 +36,8 @@ extension Generator {
             
             \(assembleTokenSpecificationAttrbuteEnum())
             
+            \(assembleLexError())
+            
             """
         
         return lexerClassString

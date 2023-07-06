@@ -2,7 +2,7 @@
 let input =
 """
 integer                 :           [0-9]*
-integer                 :           (0x|0b)[0-9]*
+integer                 :           0x[0-9A-Fa-f][0-9A-Fa-f]*|0b[01][01]*
 @2 @self keyword        :           if|else|while|func|var|let|try|catch|for|in
 @1 identifier           :           [a-zA-Z][a-zA-Z0-9_]*
 @self control           :           [{}();:,.=!?@+*/%-]
@@ -17,5 +17,8 @@ integer                 :           (0x|0b)[0-9]*
 // tid for produktet.
 
 // Dessuten bør parsingen støtte escape sequences, f.eks. \]
+
+// I tillegg bør flere regex-operatorer legges til, spesielt '+' ("minst én") og [^...] ("hva som helst, utenom ...")
+// Sistnevnte krever nok en smartere måte å gjøre NFA/DFA transitions på: Kanskje må det også være en transition for "ikke ..."?
 
 try Generator.generate(with: input, directory: "/Users/frederikedvardsen/Desktop", fileName: "lexfile")

@@ -32,6 +32,7 @@
 		085EFCFB2A544E1B0074283A /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085EFCFA2A544E1B0074283A /* Generator.swift */; };
 		085EFCFD2A544E8A0074283A /* TokenSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085EFCFC2A544E8A0074283A /* TokenSpecification.swift */; };
 		089A10A22A561F1000956B5D /* assembleRegionStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A10A12A561F1000956B5D /* assembleRegionStruct.swift */; };
+		089A10C02A57176900956B5D /* assembleLexError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A10BF2A57176900956B5D /* assembleLexError.swift */; };
 		08AEDCDC2A55C4CE00A1EA3B /* assembleInitialComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCDB2A55C4CE00A1EA3B /* assembleInitialComments.swift */; };
 		08AEDCDE2A55C4FE00A1EA3B /* assembleLexClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCDD2A55C4FE00A1EA3B /* assembleLexClass.swift */; };
 		08AEDCE02A55C52600A1EA3B /* assembleDFASimulatorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AEDCDF2A55C52600A1EA3B /* assembleDFASimulatorClass.swift */; };
@@ -79,6 +80,7 @@
 		085EFCFA2A544E1B0074283A /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		085EFCFC2A544E8A0074283A /* TokenSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSpecification.swift; sourceTree = "<group>"; };
 		089A10A12A561F1000956B5D /* assembleRegionStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleRegionStruct.swift; sourceTree = "<group>"; };
+		089A10BF2A57176900956B5D /* assembleLexError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleLexError.swift; sourceTree = "<group>"; };
 		08AEDCDB2A55C4CE00A1EA3B /* assembleInitialComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleInitialComments.swift; sourceTree = "<group>"; };
 		08AEDCDD2A55C4FE00A1EA3B /* assembleLexClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleLexClass.swift; sourceTree = "<group>"; };
 		08AEDCDF2A55C52600A1EA3B /* assembleDFASimulatorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleDFASimulatorClass.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				08AEDCE32A55C55100A1EA3B /* assembleTableStruct.swift */,
 				08AEDCE52A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift */,
 				0818B6902A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift */,
+				089A10BF2A57176900956B5D /* assembleLexError.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				08AEDCE62A55C56900A1EA3B /* assembleTokenSpecificationStruct.swift in Sources */,
 				0849CAEA2A53181D00889957 /* RegexAlternation.swift in Sources */,
 				08AEDCE42A55C55100A1EA3B /* assembleTableStruct.swift in Sources */,
+				089A10C02A57176900956B5D /* assembleLexError.swift in Sources */,
 				0849CAF92A531D3C00889957 /* NFATransition.swift in Sources */,
 				0849CAEC2A53191C00889957 /* RegexConcatenation.swift in Sources */,
 				08AEDCDC2A55C4CE00A1EA3B /* assembleInitialComments.swift in Sources */,
