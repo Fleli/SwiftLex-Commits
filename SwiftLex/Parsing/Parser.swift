@@ -12,8 +12,6 @@ class Parser {
         
         let regex = try parse(3)
         
-        print(regex.description)
-        
         return regex
         
     }
@@ -21,9 +19,7 @@ class Parser {
     private func parse(_ depth: Int) throws -> Regex {
         
         if (depth == 0) {
-            
             return try parseFactor()
-            
         }
         
         var regex = try parse(depth - 1)
@@ -99,7 +95,7 @@ class Parser {
             
             guard self.next == Token(true, ")") else {
                 print("Will throw. Parenthesized was \(parenthesizedRegex)")
-                throw LexError.unexpectedEndOfInput("Expected ), not \(self.next) (at \(index))")
+                throw LexError.unexpectedEndOfInput("Expected ), not \(String(describing: self.next)) (at \(index))")
             }
             
             incrementIndex()
@@ -129,6 +125,12 @@ class Parser {
         // På dette punktet er ikke next = [, men etter det igjen.
         
         var charsInRangeDescription: [Character] = []
+        
+        let isNonMatching = (next == Token(true, "^"))
+        
+        if (isNonMatching) {
+            incrementIndex()
+        }
         
         var buffer: [Token?] = [nil, nil, nil]
         
@@ -168,7 +170,7 @@ class Parser {
             throw LexError.wrongInputFormat
         }
         
-        let regex = produceRegexFrom(chars: charsInRangeDescription)
+        let regex = produceRegexFrom(chars: charsInRangeDescription, isNonMatching)
         
         return regex
         
@@ -204,17 +206,29 @@ class Parser {
         
     }
     
-    private func produceRegexFrom(chars: [Character]) -> Regex {
+    private func produceRegexFrom(chars: [Character], _ isNonMatching: Bool) -> Regex {
         
-        let first = chars[0]
+        let regexChars: Set<Character>
+        
+        if (isNonMatching) {
+            regexChars = Character.validChars.symmetricDifference(chars)
+        } else {
+            regexChars = Set<Character>(chars)
+        }
+        
+        let first = regexChars.first!
         
         var regex: any Regex = RegexLiteral(literal: first)
         
-        for (charIndex) in (1 ..< chars.count) {
+        print("Regex chars \(regexChars)")
+        
+        for (char) in (regexChars) {
             
-            let char = chars[charIndex]
+            if (char == first) {
+                continue
+            }
+            
             let literal = RegexLiteral(literal: char)
-            
             regex = RegexAlternation(regex, literal)
             
         }

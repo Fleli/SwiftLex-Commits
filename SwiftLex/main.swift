@@ -5,10 +5,11 @@ integer                 :           [0-9]*
 integer                 :           0b[01][01]*|0x[0-9A-Fa-f][0-9A-Fa-f]*
 @2 @self keyword        :           if|else|while|func|var|let|try|catch|for|in
 @1 identifier           :           [a-zA-Z][a-zA-Z0-9_]*
-@self control           :           [{}();:,.=!?@+*/%-\\[\\]]
+@self control           :           [{}\\(\\);:,.=!?@+*/%-\\[\\]]
 @self ellipsis          :           ...
 @self equals            :           ==
 @discard space          :           [ \\n]
+comment                 :           //[^\\n]*
 """
 
 // En av de neste prioriteringene bør være DFA minimization: Per nå vil hvert (62) tegn i [a-zA-Z0-9] ha egen state, med identiske

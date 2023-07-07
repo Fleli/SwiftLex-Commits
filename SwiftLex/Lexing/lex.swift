@@ -1,6 +1,5 @@
 extension String {
     
-    
     func generateTokens() throws -> TokenList {
         
         var index = 0
@@ -16,7 +15,7 @@ extension String {
                 
             case nil:
                 break loop
-            case "&", "|", "*", "(", ")", "[", "]":
+            case "&", "|", "*", "(", ")", "[", "]", "^":
                 token = Token(true, next!)
             case "\\" where (self[index + 1] == "n"):
                 token = Token(false, "\n")
@@ -37,13 +36,8 @@ extension String {
             
         }
         
-        tokens.array.forEach { token in
-            print("IsOperator:", token.isOperator, " -- Content:", token.content)
-        }
-        
         return tokens
         
     }
-    
     
 }
