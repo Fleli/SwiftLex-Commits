@@ -128,8 +128,6 @@ class Generator {
         
         tables.append(table)
         
-        print("Finished table for regex: \(specification.regex)")
-        
     }
     
     private func createFiles(_ fileName: String, _ content: String) {

@@ -37,7 +37,7 @@ extension NFAState {
         
         closure.insert(self)
         
-        let epsilonTransitions = transitions.filter( { $0.character == nil } )
+        let epsilonTransitions = transitions.filter { $0.character == nil }
         
         epsilonTransitions.forEach { transition in
             transition.newState.fillEpsilonClosure(&closure)

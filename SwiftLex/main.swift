@@ -17,7 +17,6 @@ comment                 :           //[^\\n]*
 // state, vil det bare kreves 62 outputs fra én state, så da blir space-kompleksitet bare O(n), som drastisk vil redusere kompilerings-
 // tid for produktet.
 
-// I tillegg bør flere regex-operatorer legges til, spesielt '+' ("minst én") og [^...] ("hva som helst, utenom ...")
-// Sistnevnte krever nok en smartere måte å gjøre NFA/DFA transitions på: Kanskje må det også være en transition for "ikke ..."?
+// I tillegg bør flere regex-operatorer legges til, spesielt '+' ("minst én")
 
 try Generator.generate(with: input, directory: "/Users/frederikedvardsen/Desktop", fileName: "lexfile")

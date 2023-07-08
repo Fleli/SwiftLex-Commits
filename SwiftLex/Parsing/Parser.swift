@@ -94,7 +94,6 @@ class Parser {
             let parenthesizedRegex = try parse(3)
             
             guard self.next == Token(true, ")") else {
-                print("Will throw. Parenthesized was \(parenthesizedRegex)")
                 throw LexError.unexpectedEndOfInput("Expected ), not \(String(describing: self.next)) (at \(index))")
             }
             
@@ -121,8 +120,6 @@ class Parser {
     }
     
     private func parseRangeDescription() throws -> Regex {
-        
-        // På dette punktet er ikke next = [, men etter det igjen.
         
         var charsInRangeDescription: [Character] = []
         
@@ -219,8 +216,6 @@ class Parser {
         let first = regexChars.first!
         
         var regex: any Regex = RegexLiteral(literal: first)
-        
-        print("Regex chars \(regexChars)")
         
         for (char) in (regexChars) {
             
