@@ -23,12 +23,12 @@ extension Generator {
             public func lex(_ input: String) throws -> [Token] {
                 
                 self.index = 0
+                self.input = input
                 
                 self.line = 0
                 self.col = 0
                 
-                self.input = input
-                self.tokens = []
+                tokens = []
                 
                 while (index < input.count) {
                     
@@ -106,7 +106,7 @@ extension Generator {
                 let endIndex = input.index(input.startIndex, offsetBy: lastAccepting)
                 
                 guard (endIndex > startIndex) else {
-                    throw LexError.invalidCharacter
+                    throw LexError.invalidCharacter(input[startIndex])
                 }
                 
                 let slice = input[startIndex ..< endIndex]
