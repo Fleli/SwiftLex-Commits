@@ -53,15 +53,15 @@ extension Generator {
                 let newLines = content.filter {$0 == "\\n"} .count
                 
                 if (newLines > 0) {
-                    col = 0
+                    col = -1
                     line += newLines
                 }
                 
-                let startCol = index
+                let startCol = col
                 
                 adjustIndices(maximalMunch)
                 
-                let endCol = index - 1
+                let endCol = col - 1
                 
                 if (attributes.contains(.discard)) {
                     return nil
@@ -118,6 +118,7 @@ extension Generator {
             private func adjustIndices(_ result: SimulatorResult) {
                 
                 let lastAccepting = result.lastAccepting
+                col += lastAccepting - index
                 index = lastAccepting
                 
             }
