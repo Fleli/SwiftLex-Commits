@@ -57,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0813D8CA2A892EB500F802EA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0818B6902A5616D500CAC028 /* assembleTokenSpecificationAttributeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assembleTokenSpecificationAttributeEnum.swift; sourceTree = "<group>"; };
 		0818B6922A56171B00CAC028 /* TokenSpecificationAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSpecificationAttribute.swift; sourceTree = "<group>"; };
 		082572502A5476F800446711 /* FileAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAssembler.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		0849CACE2A5312B900889957 = {
 			isa = PBXGroup;
 			children = (
+				0813D8CA2A892EB500F802EA /* README.md */,
 				0849CAD92A5312B900889957 /* SwiftLex */,
 				0849CAD82A5312B900889957 /* Products */,
 			);

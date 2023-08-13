@@ -106,6 +106,8 @@ extension Generator {
                 let endIndex = input.index(input.startIndex, offsetBy: lastAccepting)
                 
                 guard (endIndex > startIndex) else {
+                    print("Throwing. startIndex = \\(index)")
+                    print(tokens)
                     throw LexError.invalidCharacter(input[startIndex])
                 }
                 
