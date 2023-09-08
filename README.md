@@ -7,7 +7,7 @@ SwiftLex is a lexical analyzer generator written for and in Swift. It produces a
 Use the multi-line string `input` in `main.swift` to write the specification.
 Each line should contain one _token definition_. A token definition contains a token type followed by `:` and then the matching regex. Certain attributes might precede the token type if needed.
 
-The token's `type` is designed to be easy to use with a parser, for example [SwiftLex](https://github.com/Fleli/SwiftSLR). The token's `content` contains the actual text that matched the regex (RHS).
+The token's `type` is designed to be easy to use with a parser, for example [SwiftSLR](https://github.com/Fleli/SwiftSLR). The token's `content` contains the actual text that matched the regex (RHS).
 
 An example specification matching identifiers, integers and control symbols is the following:
 
