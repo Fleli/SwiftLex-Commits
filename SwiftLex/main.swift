@@ -1,9 +1,13 @@
 
 let input =
+// LEX SPECIFICATION FOR SWIFT FRONT-END TEST
 """
 @discard space          :           [ \\n\\t]
 @self keyword           :           private|public|if|else|class|struct|var|let
-@self control           :           [:;.,{}\\[\\]\\(\\)!?<>+/|*-]
+@self control           :           [=:;.,{}\\[\\]\\(\\)!?<>+/|*-]
+@self arrow             :           ->
+@self boolAnd           :           \\&\\&
+@self boolOr            :           \\|\\|
 identifier              :           [A-Za-z_][A-Za-z_0-9]*
 integer                 :           [0-9]*
 """

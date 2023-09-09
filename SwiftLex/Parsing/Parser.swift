@@ -62,7 +62,7 @@ class Parser {
             return nil
         }
         
-        if [ (1 , "*") , (2 , "&") , (3 , "|") ].contains(where: { $0 == (depth , next.content) } ) {
+        if [ (1 , "*") , (2 , "&") , (3 , "|") ].contains(where: { $0 == (depth , next.content) && next.isOperator } ) {
             return next
         }
         
